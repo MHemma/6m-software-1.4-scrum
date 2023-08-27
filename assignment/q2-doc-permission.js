@@ -72,4 +72,20 @@ class Permission{
     }
 }
 
-// Add code here
+class Document extends Permission {
+    constructor (role, operation, content) {
+        super (role, operation);
+        this.#content = content;
+    }
+
+    process() {
+        if (this.check()){
+            console.log("Allowed");
+        } else {
+            console.log('Blocked')
+        }
+    }
+}
+
+
+        
