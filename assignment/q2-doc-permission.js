@@ -73,6 +73,7 @@ class Permission{
 }
 
 class Document extends Permission {
+    #content; 
     constructor (role, operation, content) {
         super (role, operation);
         this.#content = content;
@@ -88,4 +89,11 @@ class Document extends Permission {
 }
 
 
-        
+const d1 = new Document(Permission.RolesConst.EDITOR, Permission.OperationsConst.UPDATE, "Hello content")
+d1.process();
+
+const d2 = new Document(Permission.RolesConst.READER, Permission.OperationsConst.UPDATE, "Hello content")
+d2.process();
+
+const d3 = new Document(Permission.RolesConst.OWNER, Permission.OperationsConst.DELETE, "Hello content")
+d3.process();
