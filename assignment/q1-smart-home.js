@@ -8,8 +8,10 @@
 
 class BaseSignal {
     constructor(type){
-        this.type = type;
+        if (this.constructor === BaseSignal) {
         throw new Error("This class cannot be instantiated");
+        }
+        this.type = type;
     }
 
     send(){
@@ -35,11 +37,11 @@ class DoorSignal extends BaseSignal {
     }
 }
 
-const tv = new TvSignal();
+const tv = new TvSignal('tv');
 tv.send(); // prints "Sending tv signal"
 
-const door = new DoorSignal();
+const door = new DoorSignal('door');
 door.send(); // prints "Sending door signal"
 
-const aircon = new AirconSignal();
+const aircon = new AirconSignal('aircon');
 aircon.send(); // prints "Sending aircon signal"
